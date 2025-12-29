@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梨と見る文豪たち。</title>
+    <style>
+        :root {
+            --bg-color: #f5f0e6;
+            --accent-color: #8b7355;
+            --text-color: #4a4a4a;
+        }
+
+        body {
+            font-family: "Sawarabi Mincho", serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+        }
+
+        .site-title {
+            font-size: 1.4rem;
+            margin-left: 20px;
+            letter-spacing: 0.1em;
+        }
+
+        .menu-btn {
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            background: none;
+            border: none;
+        }
+
+        .menu-btn span {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-color);
+            transition: 0.3s;
+        }
+        .menu-btn span:nth-child(1) { top: 0; }
+        .menu-btn span:nth-child(2) { top: 9px; }
+        .menu-btn span:nth-child(3) { bottom: 0; }
+
+        .menu-btn.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .menu-btn.open span:nth-child(2) { opacity: 0; }
+        .menu-btn.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 250px;
+            height: 100%;
+            background-color: white;
+            transition: 0.4s;
+            z-index: 1500;
+            padding-top: 80px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        nav.open { left: 0; }
+
+        nav ul { list-style: none; padding: 0; }
+        nav ul li a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: var(--text-color);
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .page {
+            display: none;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            animation: fadeIn 0.5s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        article {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .post-date {
+            font-size: 0.8rem;
+            color: #8b7355;
+            margin-bottom: 5px;
+        }
+
+        .nashi-icon { 
+            text-align: center; 
+            margin: 40px 0; 
+        }
+        .nashi-icon img {
+            width: 60px;
+            margin: 0 auto;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="site-title">梨と見る文豪たち。</div>
+    </header>
+
+    <nav id="sideNav">
+        <ul>
+            <li><a onclick="showPage('home')">サイトホーム</a></li>
+            <li><a onclick="showPage('about')">サイト詳細</a></li>
+            <li><a onclick="showPage('quotes')">梨の名言集</a></li>
+        </ul>
+    </nav>
+
+    <main id="home" class="page active">
+        
+        <article>
+            <div class="post-date">2025年12月29日 20:29</div>
+            <h2>UYKという匿名作者の投稿とのことです</h2>
+            <p>ニガーを黒人の絵文字で表した素晴らしい作品ですね。</p>
+            <p><img src="https://media.discordapp.net/attachments/1403332722461769910/1455149676012769320/IMG_6764.png?ex=6953ad3e&is=69525bbe&hm=c16bf0086afae5dd21b2ab49e37bd4ef1c6fae5e50d389a3ee8874d7bdc54e39&=&format=webp&quality=lossless&width=1473&height=308" alt="投稿画像1"></p>
+        </article>
+
+        <article>
+            <div class="post-date">2025年12月29日 20:21</div>
+            <h2>nrtpという方の掲載です</h2>
+            <p>ゲイを隠すために他人に擦り付けるかわいらしい姿が映っていますね。</p>
+            <p><img src="https://media.discordapp.net/attachments/1403332722461769910/1455151038939267241/IMG_6734.png?ex=6953ae83&is=69525d03&hm=01f2982388c431a7a95643dffe71a209419da848069e8f457753b4b60bd3f4c1&=&format=webp&quality=lossless&width=1860&height=858" alt="投稿画像2"></p>
+        </article>
+
+        <div class="nashi-icon">
+            <img src="https://cdn.discordapp.com/emojis/1413377082939015288.webp?size=240" alt="梨のアイコン">
+        </div>
+
+    </main> <main id="about" class="page">
+        <article>
+            <h2>サイト詳細</h2>
+            <p>当サイトに御アクセスいただきありがとうございます</p>
+            <p>このサイトでは、梨やその愉快な友人のユーモアあふれる投稿を募集して掲載しております</p>
+            <p>掲載をご希望の方はDiscord @huyunohi までご連絡ください。</p>
+        </article>
+    </main>
+
+    <main id="quotes" class="page">
+        <article>
+            <h2>梨の名言集</h2>
+            <p>調整中です…</p>
+        </article>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('sideNav').classList.toggle('open');
+            document.getElementById('menuBtn').classList.toggle('open');
+        }
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            if(document.getElementById('sideNav').classList.contains('open')) {
+                toggleMenu();
+            }
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+</html>
